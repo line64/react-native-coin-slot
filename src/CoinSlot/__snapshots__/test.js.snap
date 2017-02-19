@@ -1,0 +1,91 @@
+exports[`test renders correctly 1`] = `
+<View
+  onLayout={undefined}
+  style={
+    Array [
+      Object {
+        "backgroundColor": "rgba(255,255,255,.75)",
+        "borderRadius": 60,
+        "flexDirection": "row",
+        "height": 80,
+        "justifyContent": "space-between",
+        "marginHorizontal": 30,
+        "marginTop": 20,
+        "paddingVertical": 10,
+        "position": "relative",
+      },
+      Object {
+        "opacity": 1,
+      },
+    ]
+  }>
+  <Image
+    source={1}
+    style={
+      Object {
+        "flex": 0,
+        "height": 60,
+        "marginHorizontal": 20,
+        "opacity": 1,
+        "resizeMode": "contain",
+        "width": 60,
+      }
+    } />
+  <Image
+    source={1}
+    style={
+      Object {
+        "flex": 0,
+        "height": 40,
+        "marginTop": 10,
+        "opacity": 1,
+        "resizeMode": "contain",
+        "width": 70,
+      }
+    } />
+  <Image
+    source={1}
+    style={
+      Object {
+        "flex": 0,
+        "height": 60,
+        "marginHorizontal": 10,
+        "resizeMode": "contain",
+        "width": 60,
+      }
+    } />
+  <Image
+    onMoveShouldSetResponder={[Function]}
+    onMoveShouldSetResponderCapture={[Function]}
+    onResponderEnd={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderReject={[Function]}
+    onResponderRelease={[Function]}
+    onResponderStart={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    onStartShouldSetResponderCapture={[Function]}
+    source={1}
+    style={
+      Object {
+        "flex": 1,
+        "height": 60,
+        "left": 0,
+        "marginHorizontal": 20,
+        "marginVertical": 10,
+        "opacity": 0.1,
+        "position": "absolute",
+        "resizeMode": "contain",
+        "top": 0,
+        "transform": Array [
+          Object {
+            "rotate": "0deg",
+          },
+        ],
+        "width": 60,
+      }
+    } />
+</View>
+`;

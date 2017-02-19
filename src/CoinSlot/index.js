@@ -1,25 +1,25 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import { PanResponder, View, Image, Animated, Vibration } from 'react-native';
-import { loadSound } from './utils';
+//import { loadSound } from '../utils';
 import styles from './styles';
 
 import COIN_IMAGE from './assets/coin.png';
 import COIN_HOVER_IMAGE from './assets/coinHover.png';
 import ARROW_IMAGE from './assets/arrow.png';
 import HOLE_IMAGE from './assets/hole.png';
-const COIN_SOUND = loadSound('drop.mp3');
+const COIN_SOUND = null;//loadSound('drop.mp3');
 
 export default class CoinSlot extends Component {
 
   static propTypes = {
     disabled: PropTypes.bool,
-    onCoinDrop: PropTypes.func.
-  };
+    onCoinDrop: PropTypes.func,
+  }
 
   static defaultProps = {
     disabled: false,
     onCoinDrop: () => null,
-  };
+  }
 
   dragCoinPosition = new Animated.ValueXY();
   dragCoinOpacity = new Animated.Value(0.1);
@@ -91,20 +91,20 @@ export default class CoinSlot extends Component {
 
   componentWillMount() {
     this.panResponder = PanResponder.create({
-      onStartShouldSetPanResponder: enabledCheckHandler,
-      onStartShouldSetPanResponderCapture: enabledCheckHandler,
-      onMoveShouldSetPanResponder: enabledCheckHandler,
-      onMoveShouldSetPanResponderCapture: enabledCheckHandler,
-      onPanResponderGrant: dragStartHandler,
-      onPanResponderMove: dragMoveHandler,
-      onPanResponderRelease: dragReleaseOrTerminateHandler,
-      onPanResponderTerminate: dragReleaseOrTerminateHandler,
+      onStartShouldSetPanResponder: this.enabledCheckHandler,
+      onStartShouldSetPanResponderCapture: this.enabledCheckHandler,
+      onMoveShouldSetPanResponder: this.enabledCheckHandler,
+      onMoveShouldSetPanResponderCapture: this.enabledCheckHandler,
+      onPanResponderGrant: this.dragStartHandler,
+      onPanResponderMove: this.dragMoveHandler,
+      onPanResponderRelease: this.dragReleaseOrTerminateHandler,
+      onPanResponderTerminate: this.dragReleaseOrTerminateHandler,
     });
   }
 
   render() {
     return (
-      <View style={[ styles.container, { opacity: disable ? .5 : 1 } ]} onLayout={ this.handleViewLayout }>
+      <View style={[ styles.container, { opacity: this.props.disabled ? .5 : 1 } ]} onLayout={ this.handleViewLayout }>
         <Animated.Image
           source={ COIN_IMAGE }
           style={[ styles.coinImage, { opacity: this.staticCoinOpacity } ]}

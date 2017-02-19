@@ -1,1 +1,5 @@
-export * from './CoinSlot';
+import CoinSlot from './src/CoinSlot';
+
+export {
+  CoinSlot
+};
