@@ -34,13 +34,13 @@ export default class CoinSlot extends Component {
   }
 
   isAboveSlot(coinPosition) {
-    return ((coinPosition+60) / layoutWidth >= .9);
+    return ((coinPosition+60) / this.layoutWidth >= .9);
   }
 
   insertCoinInSlot() {
     Vibration.vibrate();
     if (COIN_SOUND) COIN_SOUND.play();
-    setTimeout(() => onCoinDrop(), 500);
+    setTimeout(() => this.props.onCoinDrop(), 500);
   }
 
   resetCoinToStart() {
@@ -54,7 +54,7 @@ export default class CoinSlot extends Component {
   moveCoinToNewPosition(newPosition, isAboveSlot) {
     Animated.spring(this.dragCoinPosition, { toValue: { x: newPosition, y: 0 } }).start();
     Animated.spring(this.dragCoinRotation, { toValue: newPosition }).start();
-    Animated.spring(this.dragCoinOpacity, { toValue: (isAboveSlot ? 0 : 1) }).start();
+    Animated.spring(this.dragCoinOpacity, { toValue: (isAboveSlot ? .25 : 1) }).start();
     Vibration.vibrate([0, 3]);
   }
 
@@ -79,14 +79,14 @@ export default class CoinSlot extends Component {
   dragMoveHandler = (event, gestureState) => {
     const newCoinPosition = this.trimCoinPosition(gestureState.dx);
     const isAboveSlot = this.isAboveSlot(newCoinPosition);
-    this.moveCoin(newCoinPosition, isAboveSlot);
+    this.moveCoinToNewPosition(newCoinPosition, isAboveSlot);
   }
 
   dragReleaseOrTerminateHandler = (event, gestureState) => {
     this.resetCoinToStart();
     const newCoinPosition = this.trimCoinPosition(gestureState.dx);
     const isAboveSlot = this.isAboveSlot(newCoinPosition);
-    if (isAboveSlot) this.insertCoin();
+    if (isAboveSlot) this.insertCoinInSlot();
   }
 
   componentWillMount() {
@@ -104,7 +104,7 @@ export default class CoinSlot extends Component {
 
   render() {
     return (
-      <View style={[ styles.container, { opacity: this.props.disabled ? .5 : 1 } ]} onLayout={ this.handleViewLayout }>
+      <View style={[ styles.container, { opacity: this.props.disabled ? .5 : 1 } ]} onLayout={ this.viewLayoutHandler }>
         <Animated.Image
           source={ COIN_IMAGE }
           style={[ styles.coinImage, { opacity: this.staticCoinOpacity } ]}
