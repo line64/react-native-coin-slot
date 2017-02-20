@@ -1,6 +1,6 @@
 {
   "name": "react-native-coin-slot",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "A React Native component simulating a coin slot",
   "main": "index.js",
   "scripts": {
