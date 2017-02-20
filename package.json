@@ -1,10 +1,10 @@
 {
   "name": "react-native-coin-slot",
-  "version": "0.2",
+  "version": "0.3.0",
   "description": "A React Native component simulating a coin slot",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest --no-cache"
   },
   "jest": {
     "preset": "react-native",
@@ -32,14 +32,17 @@
   },
   "homepage": "https://github.com/line64/react-native-coin-slot#readme",
   "peerDependencies": {
-    "react-native": ">=0.20.0",
+    "react": "^15.0.0",
+    "react-native": ">=0.38.0",
     "react-native-sound": "^0.9.0"
   },
   "devDependencies": {
+    "babel-jest": "^18.0.0",
+    "babel-preset-react-native": "^1.9.1",
     "jest": "^18.1.0",
+    "jest-react-native": "^18.0.0",
     "react": "^15.4.2",
     "react-native": "^0.41.2",
-    "react-native-sound": "^0.9.0",
     "react-test-renderer": "^15.4.2"
   }
 }
